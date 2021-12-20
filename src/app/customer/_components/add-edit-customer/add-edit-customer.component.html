@@ -1,0 +1,61 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-8">
+        <div class="card-header text-center card">
+            <div *ngIf="!isView" class="h1">Add Customer</div>
+            <div *ngIf="isView" class="h1">Customer Details</div>
+
+        </div>
+        <div class="card-body">
+            <div class="form-row">
+                <div class=" col">
+                    <label for="lname">Name</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="Enter Customer Name"
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback ">
+                        <div *ngIf="f.name.errors.required">Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class=" col">
+                    <label for="lemail">Email</label>
+                    <input type="text" class="form-control" formControlName="email" placeholder="Enter Email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback ">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class=" col">
+                    <label for="lphone">Phone</label>
+                    <input type="number" class="form-control" formControlName="phone" placeholder="Enter Phone Number"
+                        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback ">
+                        <div *ngIf="f.phone.errors.required">Phone no is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class=" col">
+                    <label for="laddress">Address</label>
+                    <textarea class="form-control" formControlName="address" placeholder="Enter Address"
+                        [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback ">
+                        <div *ngIf="f.address.errors.required">Address is required</div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class=" col">
+                    <!-- /.card-body -->
+                    <button type="submit" *ngIf="!isView" class="btn btn-primary" [disabled]="!customerForm.valid">Add
+                        Customer</button>
+                        <a *ngIf="isView" class="btn btn-primary" href="/">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br/>
